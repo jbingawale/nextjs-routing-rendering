@@ -1,9 +1,7 @@
 import { DUMMY_NEWS } from "@/dummy-news";
-import Link from "next/link";
-
 import { notFound } from "next/navigation";
 
-export default async function NewsDetailPage({ params }) {
+export default async function ImagePage({ params }) {
   const { slug: newsSlug } = await params;
   const newsItem = DUMMY_NEWS.find((newsItem) => newsItem.slug === newsSlug);
 
@@ -12,13 +10,11 @@ export default async function NewsDetailPage({ params }) {
   }
 
   return (
-    <article className="news-article">
-      <Link href={`/news/${newsSlug}/image`}>
+    <>
+      <h2>Intercepted!</h2>
+      <div className="fullscreen-image">
         <img src={`/images/news/${newsItem.image}`} alt={newsItem.title} />
-      </Link>
-      <h2>{newsItem.title}</h2>
-      <time dateTime={newsItem.date}>{newsItem.date}</time>
-      <p>{newsItem.content}</p>
-    </article>
+      </div>
+    </>
   );
 }
